@@ -35,6 +35,10 @@ def load_dataframe_to_bq(df, target_table):
 
 if __name__ == "__main__":
 
-    target_table = "dev_source.completed_housing_units_annual"
-    df = completed_housing_final()
+    # target_table = "dev_source.completed_housing_units_annual"
+    # df = completed_housing_final()
+
+    target_table = "dev_source.started_housing_units_annual"
+    df = started_housing_final()
+    
     load_dataframe_to_bq(df, target_table)
