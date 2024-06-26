@@ -52,11 +52,7 @@ def completed_annual_housing_units():
     df = pd.read_excel(file_path, header=4)
     df_copy = df.copy()  # Copy to preserve original data
     df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
-    df_cleaned.columns = (
-        df_cleaned.columns.str.strip()
-        .str.replace("\n", " ")
-        .str.replace(r"\s+", " ", regex=True)
-    )
+    df_cleaned.columns = df_cleaned.columns.str.strip().str.replace("\n", " ").str.replace(r"\s+", " ", regex=True)
     df_final = df_cleaned.dropna(subset=["Year"])
     df_final.reset_index(drop=True, inplace=True)
     df_final.columns = housing_schema
@@ -84,18 +80,15 @@ def started_annual_housing_units():
     df_copy = df.copy()  # Copy to preserve original data
 
     df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
-    df_cleaned.columns = (
-        df_cleaned.columns.str.strip()
-        .str.replace("\n", " ")
-        .str.replace(r"\s+", " ", regex=True)
-    )
+    df_cleaned.columns = df_cleaned.columns.str.strip().str.replace("\n", " ").str.replace(r"\s+", " ", regex=True)
     df_final = df_cleaned.dropna(subset=["Year"])
     df_final.reset_index(drop=True, inplace=True)
-    df_final.columns = housing_schema # Imported
+    df_final.columns = housing_schema  # Imported
     non_numeric_years = df_final[~df_final["year"].astype(str).str.isnumeric()]
     df_final_cleaned = df_final.drop(non_numeric_years.index)
     df_final_cleaned["year"] = df_final_cleaned["year"].astype(str)
     return df_final_cleaned
+
 
 def skim_data(df):
     return skim(df)
@@ -103,13 +96,13 @@ def skim_data(df):
 
 def completed_housing_final():
     """
-    Annual Completed Housing Units 
+    Annual Completed Housing Units
     ------------------------------
 
-    Data provided by the census.gov links, contains information 
-    regarding completed houses per year dating back to 1973 for both single and multi-family homes. 
-    Data also contains if they were built by for rent or sale. Further cleaning required, currently 
-    just in raw form. 
+    Data provided by the census.gov links, contains information
+    regarding completed houses per year dating back to 1973 for both single and multi-family homes.
+    Data also contains if they were built by for rent or sale. Further cleaning required, currently
+    just in raw form.
 
     Contains one UUID for each year and created_ts representing the time the data was
 
@@ -118,27 +111,27 @@ def completed_housing_final():
         pandas dataframe
 
     Usage::
-        
+
         >>> completed_housing_final()
     """
     data = completed_annual_housing_units()
     df = add_unique_key_and_created_ts(data)
-    # Convert all objects to strings 
+    # Convert all objects to strings
     for column in df.columns:
-        if df[column].dtype == 'object':
+        if df[column].dtype == "object":
             df[column] = df[column].astype(str)
     return df
 
 
 def started_housing_final():
     """
-    Annual Started Housing Units 
+    Annual Started Housing Units
     ------------------------------
 
-    Data provided by the census.gov links, contains information 
-    regarding completed houses per year dating back to 1973 for both single and multi-family homes. 
-    Data also contains if they were built by for rent or sale. Further cleaning required, currently 
-    just in raw form. 
+    Data provided by the census.gov links, contains information
+    regarding completed houses per year dating back to 1973 for both single and multi-family homes.
+    Data also contains if they were built by for rent or sale. Further cleaning required, currently
+    just in raw form.
 
     Contains one UUID for each year and created_ts representing the time the data was
 
@@ -147,18 +140,19 @@ def started_housing_final():
         pandas dataframe
 
     Usage::
-        
+
         >>> completed_housing_final()
     """
     data = started_annual_housing_units()
     df = add_unique_key_and_created_ts(data)
-    # Convert all objects to strings 
+    # Convert all objects to strings
     for column in df.columns:
-        if df[column].dtype == 'object':
+        if df[column].dtype == "object":
             df[column] = df[column].astype(str)
     return df
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
 
     completed_housing_final()
     started_housing_final()

@@ -20,5 +20,5 @@ housing_schema = [
     "multi_family_average_square_feet_per_unit",
 ]
 
-if __name__=="__main__":
+if __name__ == "__main__":
     housing_schema
