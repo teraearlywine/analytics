@@ -12,7 +12,7 @@ import pandas as pd
 import os
 import uuid
 from datetime import datetime
-from schema import housing_schema
+from core.schema import housing_schema
 
 # Function to generate a UUID
 def generate_uuid():
@@ -45,7 +45,8 @@ def completed_annual_housing_units():
 
     file_path = os.path.join(os.getcwd(), "core/data", "comps_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
-    df_cleaned = df.dropna(how="all")  # Drop rows where all elements are NaN
+    df_copy = df.copy() # Copy to preserve original data 
+    df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
     df_cleaned.columns = (
         df_cleaned.columns.str.strip()
         .str.replace("\n", " ")
@@ -75,7 +76,9 @@ def started_annual_housing_units():
 
     file_path = os.path.join(os.getcwd(), "core/data", "starts_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
-    df_cleaned = df.dropna(how="all")  # Drop rows where all elements are NaN
+    df_copy = df.copy() # Copy to preserve original data 
+
+    df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
     df_cleaned.columns = (
         df_cleaned.columns.str.strip()
         .str.replace("\n", " ")
