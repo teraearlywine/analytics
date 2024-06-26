@@ -113,7 +113,7 @@ def started_annual_housing_units():
     return df_final_cleaned
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    started_annual_housing_units()
-    completed_annual_housing_units()
+#     started_annual_housing_units()
+#     completed_annual_housing_units()
