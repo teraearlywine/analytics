@@ -10,7 +10,7 @@ https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#JobConfigurationLoa
 class GCP:
     def __init__(self):
         self.project_id = "teradata-development"
-        self.location = "us-central1"
+        self.location = "US"
         self.create_if_needed = "CREATE_IF_NEEDED"
         self.create_never = "CREATE_NEVER"  # table must already exist
         self.write_truncate = "WRITE_TRUNCATE"
