@@ -16,11 +16,11 @@ setup(
     #     'dependency2',
     #     # Add other dependencies your project needs
     # ],
-    # classifiers=[
-    #     'Programming Language :: Python :: 3',
-    #     'License :: OSI Approved :: MIT License',
-    #     'Operating System :: OS Independent',
-    # ],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
     # python_requires='>=3.6',
     # entry_points={
     #     'console_scripts': [
