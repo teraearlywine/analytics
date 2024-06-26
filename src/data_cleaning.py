@@ -7,14 +7,16 @@ formatting has been removed (via column renaming).
 The excel files are the only option available to download from census. They can be found in core/data 
 and are current as of 2023
 """
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning, module='openpyxl')
 
+import warnings
 import pandas as pd
 import os
 import uuid
 from datetime import datetime
 from core.schema import housing_schema
+
+warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
+
 
 # Function to generate a UUID
 def generate_uuid():
@@ -47,7 +49,7 @@ def completed_annual_housing_units():
 
     file_path = os.path.join(os.getcwd(), "core/data", "comps_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
-    df_copy = df.copy() # Copy to preserve original data 
+    df_copy = df.copy()  # Copy to preserve original data
     df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
     df_cleaned.columns = (
         df_cleaned.columns.str.strip()
@@ -78,7 +80,7 @@ def started_annual_housing_units():
 
     file_path = os.path.join(os.getcwd(), "core/data", "starts_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
-    df_copy = df.copy() # Copy to preserve original data 
+    df_copy = df.copy()  # Copy to preserve original data
 
     df_cleaned = df_copy.dropna(how="all")  # Drop rows where all elements are NaN
     df_cleaned.columns = (
@@ -115,7 +117,7 @@ def started_annual_housing_units():
     return df_final_cleaned
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    started_annual_housing_units()
-    completed_annual_housing_units()
+#     started_annual_housing_units()
+#     completed_annual_housing_units()

@@ -11,7 +11,7 @@ from src.data_cleaning import (
     completed_annual_housing_units,
     add_unique_key_and_created_ts,
 )
-from skimpy import skim 
+from skimpy import skim
 
 # Hard copy to new variable as last leg
 data = completed_annual_housing_units()
