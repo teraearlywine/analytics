@@ -19,8 +19,12 @@ from core.schema import housing_schema
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 
-# Function to generate a UUID
+def skim_data(df):
+    return skim(df)
+
+
 def generate_uuid():
+    # Function to generate a UUID
     return str(uuid.uuid4())
 
 
@@ -88,11 +92,6 @@ def started_annual_housing_units():
     df_final_cleaned = df_final.drop(non_numeric_years.index)
     df_final_cleaned["year"] = df_final_cleaned["year"].astype(str)
     return df_final_cleaned
-
-
-def skim_data(df):
-    return skim(df)
-
 
 def completed_housing_final():
     """
