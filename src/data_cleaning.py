@@ -7,6 +7,8 @@ formatting has been removed (via column renaming).
 The excel files are the only option available to download from census. They can be found in core/data 
 and are current as of 2023
 """
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='openpyxl')
 
 import pandas as pd
 import os
@@ -113,7 +115,7 @@ def started_annual_housing_units():
     return df_final_cleaned
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     started_annual_housing_units()
-#     completed_annual_housing_units()
+    started_annual_housing_units()
+    completed_annual_housing_units()
