@@ -46,7 +46,11 @@ def completed_annual_housing_units():
     file_path = os.path.join(os.getcwd(), "core/data", "comps_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
     df_cleaned = df.dropna(how="all")  # Drop rows where all elements are NaN
-    df_cleaned.columns = df_cleaned.columns.str.strip().str.replace("\n", " ").str.replace(r"\s+", " ", regex=True)
+    df_cleaned.columns = (
+        df_cleaned.columns.str.strip()
+        .str.replace("\n", " ")
+        .str.replace(r"\s+", " ", regex=True)
+    )
     df_final = df_cleaned.dropna(subset=["Year"])
     df_final.reset_index(drop=True, inplace=True)
     df_final.columns = [
@@ -92,7 +96,11 @@ def started_annual_housing_units():
     file_path = os.path.join(os.getcwd(), "core/data", "starts_quarterly_cust.xlsx")
     df = pd.read_excel(file_path, header=4)
     df_cleaned = df.dropna(how="all")  # Drop rows where all elements are NaN
-    df_cleaned.columns = df_cleaned.columns.str.strip().str.replace("\n", " ").str.replace(r"\s+", " ", regex=True)
+    df_cleaned.columns = (
+        df_cleaned.columns.str.strip()
+        .str.replace("\n", " ")
+        .str.replace(r"\s+", " ", regex=True)
+    )
     df_final = df_cleaned.dropna(subset=["Year"])
     df_final.reset_index(drop=True, inplace=True)
     df_final.columns = [
