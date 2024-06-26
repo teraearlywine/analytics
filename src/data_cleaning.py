@@ -161,6 +161,4 @@ def started_housing_final():
 if __name__=="__main__":
 
     completed_housing_final()
-    df = started_housing_final()
-
-    skim_data(df)
+    started_housing_final()
