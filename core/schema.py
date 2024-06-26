@@ -19,3 +19,6 @@ housing_schema = [
     "multi_family_median_square_feet_per_unit",
     "multi_family_average_square_feet_per_unit",
 ]
+
+if __name__=="__main__":
+    housing_schema
