@@ -11,9 +11,16 @@ from src.data_cleaning import (
     completed_annual_housing_units,
     add_unique_key_and_created_ts,
 )
-from skimpy import skim
 
-# Hard copy to new variable as last leg
-data = completed_annual_housing_units()
-df = add_unique_key_and_created_ts(data)
-skim(df)
+
+def skim_data(df):
+    from skimpy import skim
+    return skim(df)
+
+def completed_housing_final():
+    data = completed_annual_housing_units()
+    df = add_unique_key_and_created_ts(data)
+    return df
+    
+# summary = skim_data(df)
+    # print(df.head())
