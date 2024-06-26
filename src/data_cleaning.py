@@ -93,6 +93,7 @@ def started_annual_housing_units():
     df_final_cleaned["year"] = df_final_cleaned["year"].astype(str)
     return df_final_cleaned
 
+
 def completed_housing_final():
     """
     Annual Completed Housing Units
