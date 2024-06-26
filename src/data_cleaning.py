@@ -113,7 +113,9 @@ def completed_housing_final():
     Usage::
 
         >>> completed_housing_final()
+    
     """
+
     data = completed_annual_housing_units()
     df = add_unique_key_and_created_ts(data)
     # Convert all objects to strings
@@ -142,7 +144,9 @@ def started_housing_final():
     Usage::
 
         >>> completed_housing_final()
+        
     """
+
     data = started_annual_housing_units()
     df = add_unique_key_and_created_ts(data)
     # Convert all objects to strings

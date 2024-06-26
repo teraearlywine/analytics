@@ -7,8 +7,10 @@ from src.data_cleaning import completed_housing_final, started_housing_final
 logging.basicConfig(level=logging.INFO, datefmt="%Y-%m-%d", format="%(levelname)s - %(asctime)s - %(message)s")
 
 
-def load_dataframe_to_bq(df, target_table):
-    """LOAD Pandas Dataframe to Bigquery Table
+def load_df_to_source_dataset(df, target_table):
+    """
+    LOAD Pandas Dataframe to 'Source' Dataset
+    
     Passes create if needed and write truncate parameters to handle data processing
     Data is static and table is new
     """
@@ -17,7 +19,7 @@ def load_dataframe_to_bq(df, target_table):
     logging.info(f"Connected to client, proceeding to load data to {target_table}")
     load_job = client.load_table_from_dataframe(
         dataframe=df,
-        destination=target_table,
+        destination=f"source.{target_table}",
         location=gcp.location,
         job_config=bigquery.LoadJobConfig(
             create_disposition=gcp.create_if_needed,  # Create if not exists parameter
@@ -35,10 +37,10 @@ def load_dataframe_to_bq(df, target_table):
 
 if __name__ == "__main__":
 
-    comp_target_table = "source.completed_housing_units_annual"
+    comp_target_table = "completed_housing_units_annual"
     comp_df = completed_housing_final()
-    load_dataframe_to_bq(comp_df, comp_target_table)
+    load_df_to_source_dataset(comp_df, comp_target_table)
 
-    target_table = "source.started_housing_units_annual"
+    target_table = "started_housing_units_annual"
     df = started_housing_final()
-    load_dataframe_to_bq(df, target_table)
+    load_df_to_source_dataset(df, target_table)
