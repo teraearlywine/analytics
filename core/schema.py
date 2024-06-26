@@ -1,4 +1,4 @@
-[
+housing_schema = [
     "year",
     "single_family_total",
     "single_family_built_for_sale",
