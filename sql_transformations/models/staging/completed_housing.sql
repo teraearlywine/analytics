@@ -3,3 +3,5 @@
         materialized='table'
     )
 }}
+
+SELECT 1
