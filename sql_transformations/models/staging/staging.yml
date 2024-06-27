@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: completed_housing
+    description: |
+      Data transformations for census completed housing units
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null

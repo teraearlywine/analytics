@@ -1,5 +1,0 @@
-version: 2
-
-models:
-  - name: completed_housing
-    description: Data transformations for census completed housing units
