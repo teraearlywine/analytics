@@ -111,7 +111,7 @@ def construct_fintech_50_dataframe():
 
 if __name__=="__main__":
     construct_fintech_50_dataframe()
-    print(construct_fintech_50_dataframe())
+    # print(construct_fintech_50_dataframe())
     # Load to BigQuery
-    # df = construct_fintech_50_dataframe()
-    # load_df_to_source_dataset(df, 'forbes_fintech_50')
+    df = construct_fintech_50_dataframe()
+    load_df_to_source_dataset(df, 'forbes_fintech_50')
