@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: completed_housing
+  - name: annual_completed_housing
     description: |
       Data transformations for census completed housing units
     columns:
@@ -24,7 +24,7 @@ models:
       - name: multi_family_5_to_9_units
       - name: multi_family_10_to_19_units
       - name: multi_family_20_or_more_units
-  - name: started_housing
+  - name: annual_started_housing
     description: |
       Data transformations for census started housing units
     columns:
