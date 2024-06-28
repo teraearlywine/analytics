@@ -26,7 +26,7 @@ def scrape_forbes_fintech_50():
                     if d == []:
                         continue
                     else:
-                        str_data = next(d.strings) # Fix output 
+                        str_data = next(d.strings) 
                         data.append(str_data)
             except StopIteration as err: 
                 logging.info(f'list exhausted')
