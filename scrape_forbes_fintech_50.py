@@ -57,6 +57,8 @@ def process_fintech_50_records():
 
 
 if __name__=="__main__":
+
+    # TODO: build dataframe function?
     columns = ['company_name', 'industry', 'funding', 'location']
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
