@@ -55,6 +55,7 @@ def process_fintech_50_records():
             processed_data.append(grouped)
     return processed_data
 
+
 def construct_fintech_50_dataframe():
     """
     Create pandas dataframe using column headers from article and processed data.
