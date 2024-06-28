@@ -55,15 +55,19 @@ def process_fintech_50_records():
             processed_data.append(grouped)
     return processed_data
 
-
-if __name__=="__main__":
-
-    # TODO: build dataframe function?
+def construct_fintech_50_dataframe():
+    """
+    Create pandas dataframe using column headers from article and processed data.
+    """
     columns = ['company_name', 'industry', 'funding', 'location']
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
-    # Update headers
     df.columns = columns
+    return df
+
+if __name__=="__main__":
+    construct_fintech_50_dataframe()
+    
     # Load to BigQuery
-    load_df_to_source_dataset(df, 'forbes_fintech_50')
-    print(df.head())
+    # df = construct_fintech_50_dataframe()
+    # load_df_to_source_dataset(df, 'forbes_fintech_50')
