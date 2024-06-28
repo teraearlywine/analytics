@@ -29,7 +29,7 @@ def scrape_forbes_fintech_50():
                         str_data = next(d.strings) # Fix output 
                         data.append(str_data)
             except StopIteration as err: 
-                logging.info(f'list exhaussted')
+                logging.info(f'list exhausted')
         return data
     
 
@@ -47,12 +47,17 @@ def process_fintech_50_records():
 
     window = 4
     raw_data = scrape_forbes_fintech_50()
+    processed_data = []
     for index in range(0, len(raw_data), window):
         if index + window <= len(raw_data):
             grouped = raw_data[index:index + window]
-            return grouped
-        
+            processed_data.append(grouped)
+    return processed_data
 
-data = process_fintech_50_records()
-df = pd.DataFrame(data)
-print(df.head())
+
+if __name__=="__main__":
+    columns = ['company_name', 'industry', 'funding', 'location']
+    data = process_fintech_50_records()
+    df = pd.DataFrame(data)
+    df.columns = columns
+    print(df)

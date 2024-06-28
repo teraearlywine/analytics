@@ -35,12 +35,3 @@ def load_df_to_source_dataset(df, target_table):
         return False
 
 
-if __name__ == "__main__":
-
-    comp_target_table = "completed_housing_units_annual"
-    comp_df = completed_housing_final()
-    load_df_to_source_dataset(comp_df, comp_target_table)
-
-    target_table = "started_housing_units_annual"
-    df = started_housing_final()
-    load_df_to_source_dataset(df, target_table)
