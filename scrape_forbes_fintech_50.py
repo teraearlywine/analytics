@@ -60,6 +60,7 @@ def construct_fintech_50_dataframe():
     """
     Create pandas dataframe using column headers from article and processed data.
     """
+    
     columns = ['company_name', 'industry', 'funding', 'location']
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
