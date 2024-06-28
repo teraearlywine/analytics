@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: source
+    tables: 
+      - name: completed_housing_units_annual
+      - name: started_housing_units_annual
+      - name: forbes_fintech_50

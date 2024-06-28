@@ -1,12 +1,24 @@
 from src.data_load_ops import load_df_to_source_dataset
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
+import re
 import requests
 import logging
 import pandas as pd 
 
 
 logging.basicConfig(level=logging.INFO, datefmt="%Y-%m-%d", format="%(levelname)s - %(asctime)s - %(message)s")
+
+
+# def expand_billion(match):
+#     # Extract the number part and convert it to a float
+#     number = float(match.group(1))
+#     # Multiply by 1 billion
+#     full_number = number * 1_000_000_000
+#     # Return the full number as an integer string
+#     return f"{int(full_number)}"
+
+
 
 def scrape_forbes_fintech_50():
     """
@@ -92,8 +104,26 @@ def construct_fintech_50_dataframe():
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
     df.columns = columns
-    df.iloc[2] = df.iloc[2].apply()
     # Format the funding column (turn 500 m string into a numeric/int)
+    funding = df['funding']
+    for row in funding:
+
+        # Split B & M from number
+        row = row.split(' ') 
+        # If second element is 'M', add 6 zeros to first element. 
+        # If second element is 'B', check to see if there's a period, 
+        # then add 9 zeros to first element and remove the period
+        if row[1] == 'M': 
+            millions = row[0] + '000000'
+        # TODO:
+        # elif row[1] == 'B': 
+            # row[0] = expand_billion(row[0])
+            # print(row[0])
+            # billions = row[0] + '000000000'
+
+        # print(billions)
+
+    # df['funding'] = funding
     return df
 
 if __name__=="__main__":
