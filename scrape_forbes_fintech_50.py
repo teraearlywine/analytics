@@ -10,16 +10,36 @@ logging.basicConfig(level=logging.INFO, datefmt="%Y-%m-%d", format="%(levelname)
 
 def scrape_forbes_fintech_50():
     """
-    Using BS4 + requests, scrape and process HTML tags
+        Scrapes the Forbes Fintech 50 website and returns a list 
+        of strings containing the company name, industry, funding, and location
+        for each company on the list.
+        
+        The function assumes that the data returned by the website will always
+        have a length that is a multiple of 4, as the Forbes Fintech 50 list only has 4 columns.
+        
+        Returns:
+            list: A list of strings containing the company name, 
+            industry, funding, and location for each company on 
+            the Forbes Fintech 50 list.
     """
-    
+
     url = "https://www.forbes.com/lists/fintech50/"  # Replace with the URL of the page you want to scrape
     response = requests.get(url)
     if response.status_code == 200:
+        logging.info(f"Status OKAY! Proceeding to parse HTML Content")
         html_content = response.content
-        a = SoupStrainer(name="a") # Only get all 'a' tags, more optimal than searching entire html
+        
+        # Use soup strainer to only get 'a' (hyperlink) tags, optimizes bs4 process 
+        # Each row in the fintech50 is a hyperlink. We can use this to zero in on the data
+        # Note: This may be a cheat-mode, perhaps there's a more specific tag we can use
+        # Pass as parameter to BeautifulSoup
+        a = SoupStrainer(name="a") 
         soup = BeautifulSoup(html_content, "html.parser", parse_only=a) 
-        data = []  # Next, look for nested div content
+
+        # Clean data further, process nested 'div tags' in 'a tags'
+        # Div tags define a section, so once we have the table isolated 
+        # We can get the content within.
+        data = [] 
         for s in soup: 
             div = s.find_all('div')
             try: 
@@ -29,7 +49,8 @@ def scrape_forbes_fintech_50():
                     else:
                         str_data = next(d.strings) 
                         data.append(str_data)
-            except StopIteration as err: 
+            # All BS4 find_all() returns is a generator object
+            except StopIteration as err:        
                 logging.info(f'list exhausted')
         return data
     
@@ -46,9 +67,13 @@ def process_fintech_50_records():
     Returns each record grouped as a row
     """
 
-    window = 4
     raw_data = scrape_forbes_fintech_50()
+    window = 4
     processed_data = []
+
+    # Iterate over the raw data from prior function, 
+    # Since the 4 columns are fixed, use range step to increment
+    # in 4s
     for index in range(0, len(raw_data), window):
         if index + window <= len(raw_data):
             grouped = raw_data[index:index + window]
@@ -58,18 +83,23 @@ def process_fintech_50_records():
 
 def construct_fintech_50_dataframe():
     """
+    Final step in process, 
     Create pandas dataframe using column headers from article and processed data.
+    Use to pass data to bigquery
     """
     
     columns = ['company_name', 'industry', 'funding', 'location']
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
     df.columns = columns
+    df.iloc[2] = df.iloc[2].apply()
+    # Format the funding column (turn 500 m string into a numeric/int)
     return df
 
 if __name__=="__main__":
     construct_fintech_50_dataframe()
-    
+
+    # print(construct_fintech_50_dataframe())
     # Load to BigQuery
     # df = construct_fintech_50_dataframe()
     # load_df_to_source_dataset(df, 'forbes_fintech_50')
