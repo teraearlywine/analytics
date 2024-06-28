@@ -10,16 +10,6 @@ import pandas as pd
 logging.basicConfig(level=logging.INFO, datefmt="%Y-%m-%d", format="%(levelname)s - %(asctime)s - %(message)s")
 
 
-# def expand_billion(match):
-#     # Extract the number part and convert it to a float
-#     number = float(match.group(1))
-#     # Multiply by 1 billion
-#     full_number = number * 1_000_000_000
-#     # Return the full number as an integer string
-#     return f"{int(full_number)}"
-
-
-
 def scrape_forbes_fintech_50():
     """
         Scrapes the Forbes Fintech 50 website and returns a list 
@@ -105,31 +95,23 @@ def construct_fintech_50_dataframe():
     df = pd.DataFrame(data)
     df.columns = columns
     # Format the funding column (turn 500 m string into a numeric/int)
-    funding = df['funding']
-    for row in funding:
-
-        # Split B & M from number
+    rows = []
+    for row in df['funding']:
         row = row.split(' ') 
-        # If second element is 'M', add 6 zeros to first element. 
-        # If second element is 'B', check to see if there's a period, 
-        # then add 9 zeros to first element and remove the period
         if row[1] == 'M': 
-            millions = row[0] + '000000'
-        # TODO:
-        # elif row[1] == 'B': 
-            # row[0] = expand_billion(row[0])
-            # print(row[0])
-            # billions = row[0] + '000000000'
-
-        # print(billions)
-
-    # df['funding'] = funding
+            row[0] = int(row[0])
+            row[0] = row[0] * 1_000_000
+        elif row[1] == 'B': 
+            row[0] = float(row[0])
+            row[0] = row[0] * 1_000_000_000
+        row.pop()           # Removes the M + B element from each row.
+        rows.append(row[0]) # Add cleaned data to empty list
+    df['funding'] = rows    # Replace prior values with cleaned data
     return df
 
 if __name__=="__main__":
     construct_fintech_50_dataframe()
-
-    # print(construct_fintech_50_dataframe())
+    print(construct_fintech_50_dataframe())
     # Load to BigQuery
     # df = construct_fintech_50_dataframe()
     # load_df_to_source_dataset(df, 'forbes_fintech_50')
