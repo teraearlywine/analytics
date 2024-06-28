@@ -1,3 +1,4 @@
+from src.data_load_ops import load_df_to_source_dataset
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
 import requests
@@ -59,5 +60,8 @@ if __name__=="__main__":
     columns = ['company_name', 'industry', 'funding', 'location']
     data = process_fintech_50_records()
     df = pd.DataFrame(data)
+    # Update headers
     df.columns = columns
-    print(df)
+    # Load to BigQuery
+    load_df_to_source_dataset(df, 'forbes_fintech_50')
+    print(df.head())
