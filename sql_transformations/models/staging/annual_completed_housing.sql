@@ -1,6 +1,12 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        partition_by = {
+            "field": "created_ts"
+          , "data_type": "date"
+          , "granularity": "month"
+        }
+      , cluster_by = "uuid"
     )
 }}
 
