@@ -12,4 +12,4 @@
 }}
 
 SELECT  * 
-FROM    ${ref('pele_intermediate__annual_completed_housing')}
+FROM    {{ ref('pele_intermediate__annual_completed_housing') }}
