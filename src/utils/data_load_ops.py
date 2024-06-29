@@ -1,7 +1,7 @@
 import logging
 from core.config_gcp import GCP
 from google.cloud import bigquery
-from src.data_cleaning import completed_housing_final, started_housing_final
+from src.utils.data_cleaning import completed_housing_final, started_housing_final
 
 
 logging.basicConfig(level=logging.INFO, datefmt="%Y-%m-%d", format="%(levelname)s - %(asctime)s - %(message)s")

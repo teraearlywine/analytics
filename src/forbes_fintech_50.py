@@ -1,4 +1,4 @@
-from src.data_load_ops import load_df_to_source_dataset
+from src.utils.data_load_ops import load_df_to_source_dataset
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
 import re
