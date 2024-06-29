@@ -1,7 +1,7 @@
 """
 https://docs.streamlit.io/get-started/fundamentals/main-concepts
 """
-from src.scrape_forbes_fintech_50 import construct_fintech_50_dataframe
+from src.forbes_fintech_50 import construct_fintech_50_dataframe
 import streamlit as st
 
 
