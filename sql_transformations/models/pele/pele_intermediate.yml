@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: pele_intermediate__annual_completed_housing
+    description: |
+      Bakes in transformations and futher data cleaning
+      in order to visualize and slice the data more clearly
