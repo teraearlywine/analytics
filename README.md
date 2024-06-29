@@ -18,3 +18,7 @@ The core sub-directory contains constants and configurations relating to the ELT
 ## SRC Sub-Directory
 
 Following the python 'source' code naming conventions, this sub-directory contains the source code. It may be worthwhile in the future to refactor data cleaning. The pandas transformations are a little verbose and cumbersome. Placing into a class we could use private / public functions for portability purposes. 
+
+
+-----
+https://docs.sqlfluff.com/en/stable/rules.html#rule-layout.commas
