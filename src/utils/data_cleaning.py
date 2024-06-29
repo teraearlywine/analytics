@@ -39,11 +39,11 @@ def add_unique_key_and_created_ts(data):
     data["created_ts"] = data.apply(lambda _: current_timestamp(), axis=1).astype(str)
     return data
 
-def add_housing_type_flag(df):
-    for column in df.columns:
-        if column == re.search(r"^single_"):
-            print(column)
-            return True
+# def add_housing_type_flag(df):
+#     # Search columns in housing data for single_, return true if found
+#     pattern = re.compile(r'single_')
+#     found = any(pattern.search(column) for column in df.columns)
+#     return found
 
 
 def completed_annual_housing_units():
@@ -167,6 +167,3 @@ if __name__ == "__main__":
 
     completed_housing_final()
     started_housing_final()
-
-    df = completed_housing_final()
-    add_housing_type_flag(df)
