@@ -13,6 +13,7 @@
 
 
 SELECT  uuid
+      , year_dt
       , created_ts
       , single_family_total
       , single_family_built_for_sale
@@ -26,4 +27,4 @@ SELECT  uuid
       , multi_family_5_to_9_units
       , multi_family_10_to_19_units
       , multi_family_20_or_more_units
-FROM  {{ ref('annual_completed_housing') }}
+FROM    {{ ref('annual_completed_housing') }}

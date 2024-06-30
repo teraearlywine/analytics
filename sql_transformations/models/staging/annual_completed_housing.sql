@@ -25,5 +25,5 @@ SELECT  uuid
       , SAFE_CAST(multi_family_2_to_4_units AS INT64) AS multi_family_2_to_4_units
       , SAFE_CAST(multi_family_5_to_9_units AS INT64) AS multi_family_5_to_9_units
       , SAFE_CAST(multi_family_10_to_19_units AS INT64) AS multi_family_10_to_19_units
-      , SAFE_CAST(multi_family_20_or_more_units AS INT64) AS multi_family_20_or_more_unit
+      , SAFE_CAST(multi_family_20_or_more_units AS INT64) AS multi_family_20_or_more_units
 FROM    {{ source('source', 'completed_housing_units_annual') }}
