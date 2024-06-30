@@ -6,7 +6,7 @@
 
 -- Alias and casting
 SELECT  uuid
-      , year
+      , PARSE_DATE('%Y', year) AS year_dt 
       , SAFE_CAST(created_ts AS TIMESTAMP) AS created_ts
       , SAFE_CAST(single_family_total AS INT64) AS single_family_total
       , SAFE_CAST(single_family_built_for_sale AS INT64) AS single_family_built_for_sale
