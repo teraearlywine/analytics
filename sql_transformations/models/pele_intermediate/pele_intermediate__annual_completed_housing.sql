@@ -14,7 +14,7 @@
 
 SELECT  uuid
       , created_ts
-      , year
+      , EXTRACT(YEAR FROM PARSE_TIMESTAMP('%Y', year)) AS year -- Note: this is an integer data type 
       , single_family_total
       , single_family_built_for_sale
       , single_family_fee_simple
