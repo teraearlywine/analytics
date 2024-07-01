@@ -34,31 +34,28 @@ class DataGenerationAssistant(CoreAssistant):
 
         user_message = f"""
             Create data for {prompt} and output as a comma separated string data type.
-            Attribute headers must not exceed 4 elements. Return the column or attribute name first"""
-        return user_message
-    
-    def make_request(self, prompt):
-        """
-        Independently makes request to OpenAI API 
-        Returns the full chat completions class to support further processing and meta data collection
+            Attribute headers must not exceed 4 elements. Return the column or attribute name first
         """
 
-        user_message = self.__articulate_context(prompt)
-        return self.pass_instructions(self.assistant_type, user_message)
+        return user_message
+    
     
     def get_response_str(self, prompt): 
         """ 
+        Independently makes request to OpenAI API, calls the private context method and passes 
+        information to the parent method to make the chat completion request. 
 
         If the 'get_str' method is called, assume the output should be a python list data type
         Prompt must be provided by user. 
 
         Works independently from make request in case we would just like to get the message data. 
         """
-        
+        user_message = self.__articulate_context(prompt)
         try:
-            request = self.make_request(prompt)
+            request = self.pass_instructions(self.assistant_type, user_message)
             response = self.get_response(request)
             response = response.replace('\n', '')
+            logging.debug(f"Response string cleanned, moving on to create a list")
             return response
         except Exception as err:
             logging.error(f'Something is wrong, see error: \n {err}')
@@ -90,11 +87,37 @@ class DataGenerationAssistant(CoreAssistant):
         output_list = [i.strip() for i in output_list] # clean whitespace if exists
 
         assert isinstance(output_list, list), "Must be a list datatype, something is wrong"
-        logging.info(f'Successfully converted string to list')
         return output_list
+
+    def create_structured_dataframe(self, data):
+        """
+        Create Structured DataFrame 
+        ---------------------------
+
+        Using pandas, iterate over the response data from the API call and append to a structured list.
+        Then selects the first 4 list iterations (headers) considering them as column headers.
+        Every '4' records thereafter considered dataframe values.
+
+        Assumes the output string / response respects the provided prompt. 
+        """
+
+        import pandas as pd
+
+        structured = []
+        for i in range(0, len(data), 4):
+            grouped = data[i:i+4] 
+            structured.append(grouped)
+
+        df = pd.DataFrame(data=structured[1:], columns=[structured[0]])
+        df = df.astype(str)
+        return df
 
 
 if __name__=="__main__":
-    
-
     DataGenerationAssistant()
+
+    # prompt = "10 beers"
+    # assistant = DataGenerationAssistant()
+    # data = assistant.generate_list(prompt=prompt)
+    # df = assistant.create_structured_dataframe(data)
+    # print(df.head())
