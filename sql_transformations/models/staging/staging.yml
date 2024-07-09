@@ -1,6 +1,8 @@
 version: 2
 
 models:
+  - name: california_wineries
+  - name: house_plants
   - name: annual_completed_housing
     description: |
       Data transformations for census completed housing units
