@@ -1,6 +1,8 @@
 version: 2
 
 models:
+  - name: seo_top_50
+  - name: seo_top_10_metadata
   - name: california_wineries
   - name: house_plants
   - name: annual_completed_housing

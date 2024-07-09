@@ -2,6 +2,8 @@ version: 2
 sources:
   - name: source
     tables: 
+      - name: top_10_seo_pages_their_metadata_description_keywor
+      - name: top_50_seo_webpages_their_attributes
       - name: completed_housing_units_annual
       - name: started_housing_units_annual
       - name: forbes_fintech_50
