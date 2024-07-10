@@ -4,5 +4,9 @@
     )
 }}
 
-SELECT  * 
-FROM    {{ source('source', 'generate_list_100_california_wineries_type_wine_pr') }}
+SELECT  winery_name 
+      , grape_varietal
+      , location 
+      , rating
+      , price_range
+FROM    {{ source('source', 'list_top_100_wineries_california_grape_varietal_ot') }}

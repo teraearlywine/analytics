@@ -7,5 +7,5 @@ sources:
       - name: completed_housing_units_annual
       - name: started_housing_units_annual
       - name: forbes_fintech_50
-      - name: generate_list_100_california_wineries_type_wine_pr
+      - name: list_top_100_wineries_california_grape_varietal_ot
       - name: generate_list_100_house_plants_type_other_attribut
