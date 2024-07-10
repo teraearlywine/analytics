@@ -1,9 +1,10 @@
 version: 2
 
 models:
-  - name: seo_top_50
-  - name: seo_top_10_metadata
-  - name: california_wineries
-  - name: house_plants
   - name: annual_completed_housing
   - name: annual_started_housing
+  - name: forbes_fintech_50
+  - name: california_wineries
+  - name: chicken_breeds
+  - name: house_plants
+  
