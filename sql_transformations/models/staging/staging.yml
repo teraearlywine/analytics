@@ -5,6 +5,5 @@ models:
   - name: annual_started_housing
   - name: forbes_fintech_50
   - name: california_wineries
-  - name: chicken_breeds
-  - name: house_plants
+  - name: staging_table_metadata
   
