@@ -1,6 +1,7 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        dataset='cowgirl_ai'
     )
 }}
 

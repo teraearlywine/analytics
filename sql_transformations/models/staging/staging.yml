@@ -1,6 +1,4 @@
 version: 2
 
 models:
-  - name: california_wineries
-  - name: staging_table_metadata
-  
+  - name: staging__california_wineries
