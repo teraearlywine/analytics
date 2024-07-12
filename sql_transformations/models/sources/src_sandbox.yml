@@ -2,9 +2,4 @@ version: 2
 sources:
   - name: source
     tables: 
-      - name: 150_journal_transactions_startup_costs
-      - name: completed_housing_units_annual
-      - name: forbes_fintech_50
-      - name: list_top_100_wineries_california_grape_varietal_ot
-      - name: started_housing_units_annual
-      - name: top_100_saas_companies_data_ai_other_attributes
+       - name: 50_wineries_california_other_attributes
