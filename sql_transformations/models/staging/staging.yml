@@ -1,9 +1,6 @@
 version: 2
 
 models:
-  - name: annual_completed_housing
-  - name: annual_started_housing
-  - name: forbes_fintech_50
   - name: california_wineries
   - name: staging_table_metadata
   
