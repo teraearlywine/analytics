@@ -1,4 +1,33 @@
 version: 2
 
 models:
-  - name: timesheet
+  - name: int_payments__fintech_jobs
+    description: >
+        One record per job included in this <Term id="table" /> 
+
+    columns:
+      - name: job_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: job_title
+        description: Name of job title assigned to an individual (i.e. software engineer)
+        tests: 
+          - not_null
+      - name: description
+        description: A short description of the job responsibilities for context
+        tests: 
+          - not_null
+      - name: level
+        description: Hierarchial estimate of visibility and responsibility
+        tests: 
+          - not_null
+      - name: department 
+        description: What department or vertical the job is focused in
+        tests: 
+          - not_null
+      - name: salary_budget
+        description: The budget for the specific role 
+        tests: 
+          - not_null
