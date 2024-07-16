@@ -1,33 +1,54 @@
 version: 2
 
 models:
+
+
   - name: staging_payments__fintech_jobs
     description: >
         One record per job included in this <Term id="table" /> 
 
+    # required
+    config:
+      contract:
+        enforced: true
+    
+    # model-level constraints https://docs.getdbt.com/reference/resource-properties/constraints
+    constraints:
+      - type: primary_key
+        columns: [job_id] # can be an array
+      # - type: FOREIGN_KEY # multi_column
+      #   columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+      #   expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
+      
     columns:
       - name: job_id
+        data_type: integer
         description: Primary key
         tests:
           - unique
           - not_null
       - name: job_title
+        data_type: string
         description: Name of job title assigned to an individual (i.e. software engineer)
         tests: 
           - not_null
       - name: description
+        data_type: string
         description: A short description of the job responsibilities for context
         tests: 
           - not_null
       - name: level
+        data_type: string
         description: Hierarchial estimate of visibility and responsibility
         tests: 
           - not_null
       - name: department 
+        data_type: string
         description: What department or vertical the job is focused in
         tests: 
           - not_null
       - name: salary_budget
+        data_type: integer
         description: The budget for the specific role 
         tests: 
           - not_null
