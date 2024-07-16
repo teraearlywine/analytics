@@ -10,4 +10,4 @@ SELECT  payroll_id
       , pay_date
       , total_gross_pay
       , total_net_pay
-FROM    {{ source('source', 'payroll_schema_50_fintech_employees_bi-weekly_payp') }}
+FROM    {{ source('source', 'payroll') }}

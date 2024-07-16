@@ -11,4 +11,4 @@ SELECT  timesheet_id
       , overtime_hours
       , vacation_hours
       , sick_hours
-FROM    {{ source('source', 'timesheet_schema_50_fintech_employees_3_months_pai') }}
+FROM    {{ source('source', 'timesheet') }}

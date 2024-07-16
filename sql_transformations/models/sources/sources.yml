@@ -2,10 +2,11 @@ version: 2
 sources:
   - name: source
     tables: 
-      - name: department_schema_fintech_company_records_added
-      - name: employee_benefit_schema_50_employees_fintech_compa
-      - name: employee_benefit_schema_50_fintech_employees
-      - name: employee_schema_fintech_company_50_employees_add_s
-      - name: payroll_schema_50_fintech_employees_bi-weekly_payp
-      - name: salary_schema_50_fintech_employees
-      - name: timesheet_schema_50_fintech_employees_3_months_pai
+      - name: benefits
+      - name: departments
+      - name: employee_benefits
+      - name: employee_salaries
+      - name: employees
+      - name: payroll
+      - name: timesheet
+      

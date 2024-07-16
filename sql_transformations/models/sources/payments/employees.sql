@@ -15,4 +15,4 @@ SELECT  employee_id
       , hire_date
       , job_title
       , department_id
-FROM    {{ source('source', 'employee_schema_fintech_company_50_employees_add_s') }}
+FROM    {{ source('source', 'employees') }}

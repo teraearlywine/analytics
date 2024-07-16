@@ -12,4 +12,4 @@ SELECT  salary_id
       , deductions
       , net_pay
       , pay_date
-FROM    {{ source('source', 'salary_schema_50_fintech_employees') }}
+FROM    {{ source('source', 'employee_salaries') }}
