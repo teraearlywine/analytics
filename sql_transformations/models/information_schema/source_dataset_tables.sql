@@ -1,7 +1,6 @@
 {{
     config(
-        materialized='table',
-        dataset='data_operations'
+        materialized='table'
     )
 }}
 

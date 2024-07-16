@@ -1,4 +1,4 @@
 version: 2
 
 models:
-  - name: staging__california_wineries
+  - name: timesheet

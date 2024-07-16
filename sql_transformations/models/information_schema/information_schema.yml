@@ -1,5 +1,5 @@
 version: 2
 
 models:
-  - name: staging_table_metadata
+  - name: source_dataset_tables
   

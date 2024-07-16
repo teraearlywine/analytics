@@ -36,3 +36,8 @@ models:
         +tags:
           - "hourly"
         +materialized: table
+
+    information_schema:
+        +tags:
+          - "hourly"
+        +materialized: table
