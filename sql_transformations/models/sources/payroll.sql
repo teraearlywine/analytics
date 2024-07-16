@@ -4,5 +4,10 @@
     )
 }}
 
-SELECT  * 
+SELECT  payroll_id
+      , payroll_period_start
+      , payroll_period_end
+      , pay_date
+      , total_gross_pay
+      , total_net_pay
 FROM    {{ source('source', 'payroll_schema_50_fintech_employees_bi-weekly_payp') }}
