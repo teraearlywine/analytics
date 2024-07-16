@@ -9,4 +9,4 @@ sources:
       - name: employees
       - name: payroll
       - name: timesheet
-      
+      - name: fintech_jobs
