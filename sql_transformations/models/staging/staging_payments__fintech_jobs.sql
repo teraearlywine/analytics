@@ -1,5 +1,6 @@
 {{
     config(
+        dataset='staging',
         materialized='table',
         persist_docs={
             "relation": true, 

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_payments__fintech_jobs
+  - name: staging_payments__fintech_jobs
     description: >
         One record per job included in this <Term id="table" /> 
 
