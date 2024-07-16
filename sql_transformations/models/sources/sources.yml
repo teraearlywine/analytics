@@ -2,11 +2,7 @@ version: 2
 sources:
   - name: source
     tables: 
-      - name: benefits
-      - name: departments
-      - name: employee_benefits
-      - name: employee_salaries
-      - name: employees
-      - name: payroll
-      - name: timesheet
       - name: fintech_jobs
+      - name: dim_customer 
+      - name: dim_products
+      - name: dim_store_california_breweries
