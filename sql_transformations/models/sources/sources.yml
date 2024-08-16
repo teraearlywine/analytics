@@ -1,0 +1,5 @@
+version: 2
+sources:
+  - name: dbt_tera
+    tables: 
+    - name: seed_cleaned_retail_data
