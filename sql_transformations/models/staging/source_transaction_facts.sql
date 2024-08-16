@@ -23,9 +23,9 @@ from the schema in hex to clarify data model
 */
 
 SELECT  -- Transaction Facts
-        index AS pk_id
-      , invoice_date AS txn_invoice_dt  
-      , invoice_no AS txn_invoice_no -- Note: this should be unique, as per definition in schema
+        index AS pk_id                  -- PK surrogate key 
+      , invoice_date AS txn_invoice_dt  -- Note: NOT unique, however is immutable
+      , invoice_no AS txn_invoice_no    -- Note: NOT unique, however is immutable
 
         -- Customer Dimension - FK / Column
       , customer_id AS fk_customer_id
@@ -37,3 +37,10 @@ SELECT  -- Transaction Facts
       , unit_price AS product_unit_price
       , quantity AS product_sales_per_txn
 FROM    {{ source('dbt_tera', 'seed_cleaned_retail_data') }}
+
+
+-- SELECT * 
+-- FROM    the-data-refinery.dbt_tera_staging.source_transaction_facts
+-- WHERE   txn_invoice_no = "561873" -- 284452, 284437 are duplicates, first validate this as a 'true' duplicate with team
+-- ORDER BY fk_product_stock_code_id
+-- GROUP BY 1,2 
