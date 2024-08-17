@@ -1,5 +1,28 @@
 version: 2
 sources:
-  - name: staging
+  - name: dbt_tera
     tables: 
     - name: source_transaction_facts
+      description: Source data for online retail transactions 
+      columns: 
+        - name: pk_id
+          description: Column surrogate key, no actual business logic involved
+          data_tests:
+            - unique
+            - not_null
+        - name: invoice_dt
+          description: The exact date and time when the transaction occurred.
+        - name: invoice_no 
+          description: A unique identification number assigned to each transaction.
+        - name: fk_customer_id 
+          description: Foreign key to the customer dimension table
+        - name: customer_country 
+          description: The country where the customer resides.
+        - name: fk_product_stock_code_id 
+          description: A unique identification code assigned to each product sold by the retailer. 
+        - name: product_description 
+          description: A brief description of the product sold.
+        - name: product_unit_price
+          description: The price per unit of the product sold.
+        - name: product_sales_per_txn 
+
