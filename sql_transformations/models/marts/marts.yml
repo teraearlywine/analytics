@@ -2,3 +2,18 @@ version: 2
 sources:
   - name: dbt_tera_dimensions
     tables: 
+    - name: dim__customer_segment
+      description: 
+      columns: 
+        - name: customer_id
+        - name: rfm_segment 
+        - name: recency
+        - name: frequency
+        - name: monetary
+        - name: latest_order_dt 
+        - name: orders
+        - name: order_value
+    - name: dim__customers 
+    - name: dim__products
+    - name: fact__customer_stats
+    - name: fact__transactions

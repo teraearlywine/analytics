@@ -28,11 +28,11 @@ WITH staging_segments_cte AS (
 )
 
 SELECT  customer_id 
-      , latest_order_dt
-      , orders
-      , order_value
+      , CONCAT(recency, frequency, monetary) AS rfm_segment
       , recency
       , frequency
       , monetary
-      , CONCAT(recency, frequency, monetary) AS rfm_segment
+      , latest_order_dt
+      , orders
+      , order_value
 FROM    weighted_pref
