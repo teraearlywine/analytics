@@ -11,10 +11,12 @@
 }}
 
 /*
-- The marketing team, who drive traffic to the site through paid ads, email, and organic search.
-- The customer success team, who build relationships with existing customers and handle their concerns.
-- The product team, who builds and manages the website.
-- The analytics and data science team (your teammates), who do in depth analyses and reporting for the same stakeholders.
+RFM: segmentation based on how recently a customer purchased an item, 
+how frequently they purchase and overall order value. 
+
+The R, F & M segments are based from 1 - 4. 
+The scale is set so 1 is low (so low order value, long time since last purchase, doesn't buy a lot)
+and 4 being on the higher end (high order value, recently bought and buys a lot). 
 */
 
 WITH staging_segments_cte AS (
