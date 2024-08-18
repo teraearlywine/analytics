@@ -1,22 +1,26 @@
 {{
     config(
-        partition_by = {
+        schema='dimensions'
+      , partition_by = {
             "field": "created_dt"
           , "data_type": "date"
           , "granularity": "month"
         }
-      , cluster_by = "pk_customer_id"
+      , cluster_by = "pk_surrogate_key"
     )
 }}
 
-SELECT  fk_customer_id AS pk_customer_id 
-      , CURRENT_DATE AS created_dt
+-- One record for every customer and country of residence
+SELECT  DISTINCT 
+        {{dbt_utils.generate_surrogate_key(['fk_customer_id', 'customer_country'])}} AS pk_surrogate_key
+      , fk_customer_id AS customer_id 
       , customer_country 
+      , CURRENT_DATE AS created_dt
       , '' AS city
       , '' AS zip_code
 FROM    {{ ref('stg__transaction_facts') }} -- treating as 'source' for the example 
-GROUP BY 
-        pk_customer_id 
-      , customer_country
-      -- , city
-      -- , zip_code
+-- GROUP BY 
+--         pk_customer_id 
+--       , customer_country
+--       -- , city
+--       -- , zip_code
