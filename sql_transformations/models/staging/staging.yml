@@ -16,8 +16,6 @@ sources:
             - not_null
         - name: invoice_no 
           description: A unique identification number assigned to each transaction.
-          data_tests:
-            - not_null
         - name: fk_customer_id 
           description: Foreign key to the customer dimension table
           data_tests:
@@ -56,9 +54,6 @@ sources:
             - not_null
         - name: invoice_no 
           description: A unique identification number assigned to each transaction.
-          data_tests:
-            - unique
-            - not_null
         - name: fk_customer_id 
           description: Foreign key to the customer dimension table
           data_tests:

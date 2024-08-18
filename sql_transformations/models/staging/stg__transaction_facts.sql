@@ -5,7 +5,7 @@
           , "data_type": "date"
           , "granularity": "month"
         }
-      , cluster_by = "invoice_no"
+      , cluster_by = "pk_id"
     )
 }}
 
@@ -35,4 +35,4 @@ WHERE   fk_customer_id != 0 -- A handful of customer IDs had 0, this could be a 
         AND quantity >= 0   -- 143,985 negative values. Could be return, but factoring out to get only positive numbers
         AND unit_price != 0.0
         AND description != 'Manual'
-QUALIFY ROW_NUMBER() OVER (PARTITION BY invoice_no ORDER BY invoice_dt DESC) = 1
+QUALIFY ROW_NUMBER() OVER (PARTITION BY invoice_no, fk_customer_id, fk_product_stock_code_id ORDER BY invoice_dt DESC) = 1
