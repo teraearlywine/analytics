@@ -14,6 +14,33 @@ sources:
         - name: orders
         - name: order_value
     - name: dim__customers 
+      description: 
+      columns:
+        - name: pk_surrogate_key
+        - name: customer_id
+        - name: customer_country 
+        - name: created_dt 
+        - name: city 
+        - name: zip_code
     - name: dim__products
+      description: 
+      columns: 
+        - name: pk_surrogate_key
+        - name: product_id 
+        - name: description
     - name: fact__customer_stats
+      description: 
+      columns: 
+        - name: customer_id
+        - name: latest_order_dt 
+        - name: orders
+        - name: order_value
     - name: fact__transactions
+      description: 
+      columns: 
+        - name: invoice_no
+        - name: invoice_dt 
+        - name: fk_customer_id 
+        - name: fk_product_stock_code_id 
+        - name: quantity 
+        - name: unit_price 
