@@ -2,7 +2,7 @@ version: 2
 sources:
   - name: dbt_tera_dimensions
     tables: 
-    - name: dim__customers
+    - name: dim__customer
       description: Customer dimension data. One record for every customer and customer country
       columns: 
         - name: pk_surrogate_key

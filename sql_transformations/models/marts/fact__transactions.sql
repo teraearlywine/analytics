@@ -9,7 +9,7 @@
       , cluster_by = "invoice_no"
     )
 }}
-
+-- Published transactions endpoint
 SELECT  txn.invoice_no
       , txn.invoice_dt
       , txn.fk_customer_id
