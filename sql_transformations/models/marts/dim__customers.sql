@@ -1,7 +1,7 @@
 {{
     config(
-        schema='dimensions'
-      , partition_by = {
+        
+        partition_by = {
             "field": "created_dt"
           , "data_type": "date"
           , "granularity": "month"

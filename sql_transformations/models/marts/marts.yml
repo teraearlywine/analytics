@@ -4,5 +4,22 @@ sources:
     tables: 
     - name: dim__products
       description: Product dimension data
+      columns: 
+        - name: pk_customer_id
+          data_tests:
+            - unique
+            - not_null
+        - name: created_dt
+        - name: description 
+        - name: unit_price
     - name: dim__customers
       description: Customer dimension data
+      columns: 
+        - name: pk_customer_id 
+          data_tests:
+            - unique
+            - not_null
+        - name: created_dt
+        - name: customer_country
+        - name: city 
+        - name: zip_code
