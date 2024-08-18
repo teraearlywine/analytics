@@ -4,3 +4,6 @@
 **/__pycache__
 
 **/logs
+
+**/seeds
+sql_transformations/seeds/seed_cleaned_retail_data.csv
