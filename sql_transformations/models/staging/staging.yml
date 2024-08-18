@@ -43,3 +43,43 @@ sources:
           data_tests:
             - not_null
     - name: stg__transaction_facts
+      description: Normalized online purchases. One record for every item purchased invoice and invoiced date
+      columns: 
+        - name: pk_id
+          description: Column surrogate key, no actual business logic involved
+          data_tests:
+            - unique
+            - not_null
+        - name: invoice_dt
+          description: The exact date and time when the transaction occurred.
+          data_tests:
+            - not_null
+        - name: invoice_no 
+          description: A unique identification number assigned to each transaction.
+          data_tests:
+            - unique
+            - not_null
+        - name: fk_customer_id 
+          description: Foreign key to the customer dimension table
+          data_tests:
+            - not_null
+        - name: customer_country 
+          description: The country where the customer resides.
+          data_tests:
+            - not_null
+        - name: fk_product_stock_code_id 
+          description: A unique identification code assigned to each product sold by the retailer. 
+          data_tests:
+            - not_null
+        - name: description 
+          description: A brief description of the product sold.
+          data_tests:
+            - not_null
+        - name: unit_price
+          description: The price per unit of the product sold.
+          data_tests:
+            - not_null
+        - name: quantity 
+          description: The number of units of the product sold in each transaction. 
+          data_tests:
+            - not_null
