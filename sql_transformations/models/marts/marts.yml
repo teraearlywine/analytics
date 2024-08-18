@@ -2,45 +2,81 @@ version: 2
 sources:
   - name: dbt_tera_dimensions
     tables: 
-    - name: dim__customer_segment
-      description: 
-      columns: 
-        - name: customer_id
-        - name: rfm_segment 
-        - name: recency
-        - name: frequency
-        - name: monetary
-        - name: latest_order_dt 
-        - name: orders
-        - name: order_value
-    - name: dim__customers 
-      description: 
-      columns:
-        - name: pk_surrogate_key
-        - name: customer_id
-        - name: customer_country 
-        - name: created_dt 
-        - name: city 
-        - name: zip_code
-    - name: dim__products
-      description: 
-      columns: 
-        - name: pk_surrogate_key
-        - name: product_id 
-        - name: description
-    - name: fact__customer_stats
-      description: 
-      columns: 
-        - name: customer_id
-        - name: latest_order_dt 
-        - name: orders
-        - name: order_value
-    - name: fact__transactions
-      description: 
-      columns: 
-        - name: invoice_no
-        - name: invoice_dt 
-        - name: fk_customer_id 
-        - name: fk_product_stock_code_id 
-        - name: quantity 
-        - name: unit_price 
+      - name: dim__customer_segment
+        description: "Customer segmentation data based on RFM analysis."
+        columns: 
+          - name: customer_id
+            description: "Unique identifier for each customer."
+          - name: rfm_segment 
+            description: "Segment assigned based on recency, frequency, and monetary value."
+          - name: recency
+            description: "Days since the last purchase."
+          - name: frequency
+            description: "Total number of purchases."
+          - name: monetary
+            description: "Total monetary value of purchases."
+          - name: latest_order_dt 
+            description: "Date of the latest order."
+          - name: orders
+            description: "Total number of orders placed."
+          - name: order_value
+            description: "Total value of orders placed."
+
+      - name: dim__customers 
+        description: "Customer details and demographics."
+        columns:
+          - name: pk_surrogate_key
+            description: "Primary key for the customer dimension."
+          - name: customer_id
+            description: "Unique identifier for each customer."
+          - name: customer_country 
+            description: "Country of the customer."
+          - name: created_dt 
+            description: "Date the customer record was created."
+          - name: city 
+            description: "City where the customer resides."
+          - name: zip_code
+            description: "Postal code of the customer's address."
+
+      - name: dim__products
+        description: "Product details and descriptions."
+        columns: 
+          - name: pk_surrogate_key
+            description: "Primary key for the product dimension."
+          - name: product_id 
+            description: "Unique identifier for each product."
+          - name: description
+            description: "Description of the product."
+
+      - name: fact__customer_stats
+        description: "Aggregated statistics for customers."
+        columns: 
+          - name: customer_id
+            description: "Unique identifier for each customer."
+          - name: latest_order_dt 
+            description: "Date of the latest order."
+          - name: orders
+            description: "Total number of orders placed."
+          - name: order_value
+            description: "Total value of orders placed."
+
+      - name: fact__transactions
+        description: "Transaction details for each sale."
+        columns: 
+          - name: invoice_no
+            description: "Unique identifier for each invoice."
+          - name: invoice_dt 
+            description: "Date of the invoice."
+          - name: fk_customer_id 
+            description: "Foreign key referencing the customer."
+          - name: fk_product_stock_code_id 
+            description: "Foreign key referencing the product stock code."
+          - name: quantity 
+            description: "Quantity of products sold."
+          - name: unit_price 
+            description: "Price per unit of the product." 
+
+# Improvements made:
+# - Added descriptions for each table and column for better documentation.
+# - Ensured consistency in naming conventions and descriptions.
+# - Consider adding tests for data integrity and relationships between dimensions and facts.
