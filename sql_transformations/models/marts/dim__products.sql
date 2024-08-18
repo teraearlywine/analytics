@@ -1,6 +1,11 @@
 {{
     config(
-        schema='dim_dbt_tera'
+        schema='dimensions'
+      , partition_by = {
+            "field": "created_dt"
+          , "data_type": "date"
+          , "granularity": "month"
+        }
       , cluster_by = "pk_product_id"
     )
 }}

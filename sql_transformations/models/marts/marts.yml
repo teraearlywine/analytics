@@ -1,3 +1,8 @@
 version: 2
 sources:
-  - name: dbt_tera_dim
+  - name: dbt_tera_dimensions
+    tables: 
+    - name: dim__products
+      description: Product dimension data
+    - name: dim__customers
+      description: Customer dimension data
