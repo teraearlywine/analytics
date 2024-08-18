@@ -19,8 +19,3 @@ SELECT  DISTINCT
       , '' AS city
       , '' AS zip_code
 FROM    {{ ref('stg__transaction_facts') }} -- treating as 'source' for the example 
--- GROUP BY 
---         pk_customer_id 
---       , customer_country
---       -- , city
---       -- , zip_code
