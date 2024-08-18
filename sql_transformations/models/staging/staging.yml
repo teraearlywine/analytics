@@ -2,7 +2,7 @@ version: 2
 sources:
   - name: dbt_tera
     tables: 
-    - name: source_transaction_facts
+    - name: stg__source_transaction_facts
       description: Source data for online retail transactions 
       columns: 
         - name: pk_id
@@ -12,17 +12,34 @@ sources:
             - not_null
         - name: invoice_dt
           description: The exact date and time when the transaction occurred.
+          data_tests:
+            - not_null
         - name: invoice_no 
           description: A unique identification number assigned to each transaction.
+          data_tests:
+            - not_null
         - name: fk_customer_id 
           description: Foreign key to the customer dimension table
+          data_tests:
+            - not_null
         - name: customer_country 
           description: The country where the customer resides.
+          data_tests:
+            - not_null
         - name: fk_product_stock_code_id 
           description: A unique identification code assigned to each product sold by the retailer. 
-        - name: product_description 
+          data_tests:
+            - not_null
+        - name: description 
           description: A brief description of the product sold.
-        - name: product_unit_price
+          data_tests:
+            - not_null
+        - name: unit_price
           description: The price per unit of the product sold.
-        - name: product_sales_per_txn 
-
+          data_tests:
+            - not_null
+        - name: quantity 
+          description: The number of units of the product sold in each transaction. 
+          data_tests:
+            - not_null
+    - name: stg__transaction_facts
