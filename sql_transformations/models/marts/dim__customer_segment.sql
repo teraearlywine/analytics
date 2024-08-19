@@ -35,4 +35,9 @@ SELECT  customer_id
       , latest_order_dt
       , orders
       , order_value
-FROM    weighted_pref
+      , c.pk_surrogate_key -- mapping SCD next
+      , c.customer_country
+FROM    weighted_pref AS w
+        LEFT JOIN {{ ref('dim__customers') }} AS c 
+          ON  w.customer_id = c.customer_id
+          -- AND COALESCE(c.latest_order_dt) >= c.effective_start_dt -- Hypothetical
