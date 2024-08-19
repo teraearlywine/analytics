@@ -40,4 +40,5 @@ SELECT  customer_id
 FROM    weighted_pref AS w
         LEFT JOIN {{ ref('dim__customers') }} AS c 
           ON  w.customer_id = c.customer_id
-          -- AND COALESCE(c.latest_order_dt) >= c.effective_start_dt -- Hypothetical
+          -- Hypothetical Join; mapping fact to a type 2 scd table
+          -- AND COALESCE(w.effective_end_dt, CREATED_DT) >= c.effective_start_dt 
